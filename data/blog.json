@@ -1,0 +1,120 @@
+{
+  "_comment": "Blog index. Every entry in \"posts\" renders as a tile showing a TL;DR and a button that redirects to the external post at its \"url\". To add a post: append an object with kind/title/url/tldr/tags. kind \"post\" = full article tile (featured spans the row); kind \"chapter\" = a section of a longer article, shown in the compact grid.",
+  "meta": {
+    "title": "Blog & News | NEXUS Research Group",
+    "description": "Writing from the NEXUS Research Group on distributed Ising machines, 3D integration, and technology–architecture co-design."
+  },
+  "header": {
+    "eyebrow": "Blog & News",
+    "title": "From the group",
+    "lead": "Long-form technical writing from NEXUS. Each tile summarises a post — press through to read it in full on the original site."
+  },
+  "tabs": { "blogLabel": "Blog posts", "newsLabel": "News archive" },
+  "labels": {
+    "tldr": "TL;DR",
+    "cta": "Read the full post",
+    "chaptersTitle": "Inside the post",
+    "chaptersLead": "Section-by-section summaries. Every tile opens the full article on the original blog.",
+    "resourcesTitle": "Related resources"
+  },
+  "posts": [
+    {
+      "kind": "post",
+      "featured": true,
+      "slug": "distributed-ising-machines",
+      "title": "How to Scale and Accelerate Distributed Digital Ising Machines",
+      "subtitle": "A calibrated performance model and a systematic framework for system-level acceleration",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "date": "2026-08-27",
+      "author": "Tong Wu et al. · CMU · Pitt · UCSB",
+      "readingTime": "7 min read",
+      "tags": ["Computer Architecture", "Ising Machines", "Distributed Systems"],
+      "tldr": "Large Ising problems outgrow one device and expose three system costs: coupling data moving through the memory hierarchy, colored Gibbs updates synchronising, and boundary states crossing device links. We separate these costs in a performance model calibrated across GPUs, FPGAs, and ASICs. Roofline analysis shows Ising workloads have low arithmetic intensity, and measurements show performance drops sharply once the working set spills beyond on-chip storage. We develop two systematic approaches to system-level acceleration: bounded-staleness sampling reduces synchronisation frequency, and a phase-offset pipeline places boundary exchange behind interior computation. A fabricated multi-chip ASIC implements the streaming schedule.",
+      "links": [
+        { "label": "Read the paper (PDF)", "href": "https://cmu-nexus.github.io/distributed-ising-machines-blog/main.pdf" },
+        { "label": "Code & model", "href": "https://github.com/WuEric011201/distributed-ising-machines" }
+      ]
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 1",
+      "title": "Scaling changes the problem",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Partitioning"],
+      "tldr": "Practical problems outgrow one accelerator's on-chip storage, so the coupling graph must be partitioned across devices — creating a memory boundary inside each device and a communication boundary between them. The right question is not which device is fastest, but which term limits this workload at this size and mapping."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 2",
+      "title": "One equation locates the bottleneck",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Performance model"],
+      "tldr": "A four-term model — compute, memory, synchronisation, communication — locates the limiting factor in each sweep, and holds for dynamically scheduled GPUs as well as statically scheduled FPGAs and ASICs. A single calibration per GPU predicts performance at block sizes withheld from calibration, because each parameter represents a physical mechanism rather than a fitted curve."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 3",
+      "title": "Roofline analysis exposes low arithmetic intensity",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Memory"],
+      "tldr": "The first roofline analysis of Ising workloads shows their arithmetic intensity stays low even as graph degree rises, because operations and bytes grow together. On-chip residency marks the main crossover: once the coupling working set spills, sweep time rises sharply. Coupling precision and sparse format (CSR vs. ELLPACK) decide where that crossover lands."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 4",
+      "title": "Two forms of bounded-staleness sampling",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Synchronisation"],
+      "tldr": "Multi-rate bounded staleness postpones boundary-state propagation to interior p-bits; cross-partition bounded staleness postpones propagation across a partition boundary. Both bound the age of an observed neighbour state with the same parameter F. Measurements show an interior optimum in time-to-solution — past it, quality loss dominates and time-to-solution rises again."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 5",
+      "title": "Phase-offset pipelining hides boundary exchange",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Communication"],
+      "tldr": "A device updates its boundary early, dispatches the packet immediately, then computes interior spins while it travels. A link becomes latency-transparent when the whole transfer fits inside that gap — bytes still cross, but communication stops contributing to sweep time. Bandwidth alone cannot guarantee this: the device also needs enough interior work to cover link latency."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 6",
+      "title": "A fabricated four-chip system",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Silicon"],
+      "tldr": "A chain of fabricated ASICs implements the streaming design, with local SRAM holding one Pegasus-graph partition per chip. Across the tested chip counts each added chip raises aggregate throughput without increasing cycles per sweep. Partitioning can beat ordinary parallel speedup — because the working set moves from off-chip memory into on-chip storage, not from superlinear compute scaling."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 7",
+      "title": "Five checks that guide system design",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Design rules"],
+      "tldr": "Test residency first; treat synchronisation as a quality parameter and report time-to-solution; size the device and link together; match partition geometry to the graph; and compare schedules at equal solution quality. The best distributed Ising accelerator is not the one with the fastest spin update — it is the one that keeps data resident and makes coordination invisible at the target graph size."
+    },
+    {
+      "kind": "chapter",
+      "part": "Part 8",
+      "title": "What the result does not claim",
+      "url": "https://cmu-nexus.github.io/distributed-ising-machines-blog/",
+      "tags": ["Limits"],
+      "tldr": "The experiments target sparse hardware graphs — kings and Pegasus topologies. Dense all-to-all instances occupy a different regime and scale poorly on distributed digital hardware. Neither staleness mechanism preserves exact Gibbs sampling: both trade a measured amount of solution quality for throughput."
+    }
+  ],
+  "resources": {
+    "enabled": true,
+    "items": [
+      {
+        "title": "Accelerating Distributed Digital Ising Machines",
+        "detail": "Tong Wu, Ziyad Alswaidan, Shreya Mukherjee, Ting-Yu Lee, Daniel Xu, Atharva Raut, Harry Tye, Abhinav K. Puthran, Kemal Selcuk, Navid A. Aadit, Ken Mai, Prashanth Mohan, Kerem Y. Camsari, Tathagata Srimani — arXiv preprint, 2026",
+        "label": "Read preprint",
+        "href": "https://cmu-nexus.github.io/distributed-ising-machines-blog/main.pdf"
+      },
+      {
+        "title": "Calibration scripts & performance model",
+        "detail": "Artifact repository accompanying the paper — reproduce the model and the calibration.",
+        "label": "View on GitHub",
+        "href": "https://github.com/WuEric011201/distributed-ising-machines"
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "_comment": "People page. Add a member by appending to the relevant group's \"members\" array. \"photo\" is optional — when omitted an initials avatar is generated automatically.",
+  "meta": {
+    "title": "People | NEXUS Research Group",
+    "description": "Faculty, PhD students, master's and undergraduate researchers in the NEXUS Research Group at Carnegie Mellon University."
+  },
+  "header": {
+    "eyebrow": "People",
+    "title": "The group",
+    "lead": "NEXUS brings together researchers across device physics, circuit design, CAD, and computer architecture. We are always looking for new members."
+  },
+  "pi": {
+    "name": "Tathagata Srimani",
+    "role": "Assistant Professor",
+    "affiliation": "Electrical and Computer Engineering, Carnegie Mellon University",
+    "photo": "",
+    "bio": [
+      "Dr. Tathagata Srimani directs the NEXUS Research Group. His research focuses on improving the energy-efficiency and throughput of computing systems hardware through cross-stack advances in semiconductor technologies, heterogeneous integration, circuit design, and computer architecture.",
+      "He was elevated to IEEE Senior Member in 2025 and received an NSF Faculty Early Career Development (CAREER) Award in 2026. His work on foundry monolithic 3D integration received the Best Student Paper Award at the 2023 IEEE Symposium on VLSI Technology."
+    ],
+    "interests": ["Nanoelectronics", "Monolithic 3D integration", "Carbon nanotube FETs", "Technology–architecture co-design"],
+    "office": "Hamerschlag Hall 2124",
+    "email": "tsrimani@andrew.cmu.edu",
+    "links": [
+      { "label": "Website", "href": "https://tsrimani.github.io/" },
+      { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=NVcyQ3wAAAAJ" }
+    ]
+  },
+  "groups": [
+    {
+      "id": "phd",
+      "title": "PhD Students",
+      "blurb": "Doctoral researchers driving the group's core thrusts.",
+      "members": [
+        { "name": "Ziyad Alswaidan", "role": "PhD Student", "photo": "", "interests": [], "links": [] },
+        { "name": "Eric Dubberstein", "role": "PhD Student", "photo": "", "note": "NSF Graduate Research Fellow · DAC 2026 Young Fellow", "interests": ["Digital design", "3D IC CAD"], "links": [] },
+        { "name": "Atharva Raut", "role": "PhD Student", "photo": "", "note": "Qualcomm Innovation Fellow 2026 · Presidential Fellowship 2025–26", "interests": ["Probabilistic computing", "Thermal digital twins"], "links": [] },
+        { "name": "Sanjay Seshan", "role": "PhD Student", "photo": "", "note": "NSF Graduate Research Fellow", "interests": ["Computer architecture"], "links": [] },
+        { "name": "Cesely Smith", "role": "PhD Student", "photo": "", "interests": ["Ising machines"], "links": [] },
+        { "name": "Tong Wu", "role": "PhD Student", "photo": "", "note": "Qualcomm Fellowship intern", "interests": ["AI inference accelerators", "p-bit devices"], "links": [] }
+      ]
+    },
+    {
+      "id": "masters-undergrad",
+      "title": "Master's & Undergraduate Students",
+      "blurb": "Students contributing to design, characterization, and tooling across the group.",
+      "members": [
+        { "name": "Dhruv Chinmay", "role": "Undergraduate Student", "photo": "", "interests": [], "links": [] },
+        { "name": "Sankalp Naik", "role": "Master's Student", "photo": "", "interests": [], "links": [] },
+        { "name": "Rayyan Zamir", "role": "Master's Student", "photo": "", "interests": [], "links": [] }
+      ]
+    }
+  ],
+  "collaborators": {
+    "enabled": true,
+    "title": "Collaborators",
+    "blurb": "Our published work is done jointly with groups across these institutions.",
+    "items": [
+      "Massachusetts Institute of Technology",
+      "Stanford University",
+      "University of California, Santa Barbara",
+      "University of Messina",
+      "Radboud University",
+      "Qualcomm",
+      "AMD"
+    ]
+  },
+  "alumni": {
+    "enabled": true,
+    "title": "Alumni",
+    "blurb": "Where former members have gone next.",
+    "items": []
+  },
+  "joinPrompt": {
+    "enabled": true,
+    "title": "Want to join?",
+    "text": "We are recruiting PhD students, postdocs, and CMU undergraduate and master's researchers.",
+    "action": { "label": "Open positions & interest form", "href": "join.html" }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "_comment": "Short-form group news. Shown on the home page (latest N) and in the News tab of the Blog page. Dates are ISO (YYYY-MM-DD) and sorted newest-first automatically.",
+  "items": [
+    {
+      "date": "2026-05-14",
+      "title": "Atharva and Je-Wei win the Qualcomm Innovation Fellowship 2026",
+      "text": "Atharva Raut and Je-Wei Chuang received the Qualcomm Innovation Fellowship 2026 for their proposal on thermal digital twins for advanced chip designs.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2026-04-13",
+      "title": "Sanjay Seshan awarded NSF GRFP",
+      "text": "PhD student Sanjay Seshan was selected as one of 2,500 National Science Foundation Graduate Research Fellowship Program winners.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2026-04-06",
+      "title": "Srimani receives NSF CAREER Award",
+      "text": "Professor Tathagata Srimani received an NSF Faculty Early Career Development Award, a prestigious five-year grant supporting junior faculty research and education.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2026-03-31",
+      "title": "Eric Dubberstein selected as DAC 2026 Young Fellow",
+      "text": "PhD student Eric Dubberstein earned Young Fellow status for the 63rd Design Automation Conference in Long Beach, California.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2026-03-27",
+      "title": "PowerWeave accepted at ISCA 2026",
+      "text": "The PowerWeave collaboration was accepted to ISCA 2026, focusing on GPU power efficiency improvements through fine-grained voltage and frequency scaling.",
+      "tag": "Paper",
+      "url": ""
+    },
+    {
+      "date": "2026-03-19",
+      "title": "Atharva Raut receives Wei Shen and Xuehong Zhang Presidential Fellowship",
+      "text": "Atharva Raut was awarded this prestigious fellowship for the 2025–2026 academic year.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2025-12-10",
+      "title": "Technical session at IEDM: foundry monolithic 3D",
+      "text": "A technical session addressed monolithic 3D integration combining memory, logic, and emerging materials.",
+      "tag": "Talk",
+      "url": ""
+    },
+    {
+      "date": "2025-11-06",
+      "title": "Paper accepted to DATE 2026 on 3D IC thermal solutions",
+      "text": "\"3D IC Thermal Management with BEOL Wafer-Scale Sputtered Vertical h-BN\" was accepted to the DATE 2026 conference.",
+      "tag": "Paper",
+      "url": ""
+    },
+    {
+      "date": "2025-10-07",
+      "title": "Tathagata Srimani elevated to IEEE Senior Member",
+      "text": "Professor Srimani achieved this distinction, which recognizes exceptional accomplishments in electrical and computer engineering.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2025-09-02",
+      "title": "Sanjay Seshan joins NEXUS as a PhD student",
+      "text": "Sanjay Seshan joined the group as a PhD student, bringing a background in computer architecture from MIT.",
+      "tag": "Group",
+      "url": ""
+    },
+    {
+      "date": "2025-09-01",
+      "title": "Tong starts internship at Qualcomm",
+      "text": "PhD student Tong Wu began a Qualcomm Fellowship internship focused on AI inference accelerator architecture.",
+      "tag": "Group",
+      "url": ""
+    },
+    {
+      "date": "2025-08-20",
+      "title": "Probabilistic bits using perimeter-gated single photon avalanche diodes",
+      "text": "Published in IEEE Electron Device Letters, vol. 46, no. 8, pp. 1417–1420.",
+      "tag": "Paper",
+      "url": "https://ieeexplore.ieee.org/abstract/document/11028048"
+    },
+    {
+      "date": "2025-07-25",
+      "title": "Scalable connectivity for Ising machines: dense to sparse",
+      "text": "Published in Physical Review Applied, vol. 24, 014005.",
+      "tag": "Paper",
+      "url": "https://journals.aps.org/prapplied/abstract/10.1103/kx8m-5h3h"
+    },
+    {
+      "date": "2025-05-27",
+      "title": "Eric starts internship at AMD",
+      "text": "Eric Dubberstein joined Advanced Micro Devices as an L3 Cache RTL Design Intern.",
+      "tag": "Group",
+      "url": ""
+    },
+    {
+      "date": "2025-03-18",
+      "title": "Overcoming ambient drift and NBTI in foundry carbon nanotube transistors",
+      "text": "Published in ACS Applied Materials & Interfaces.",
+      "tag": "Paper",
+      "url": "https://pubs.acs.org/doi/full/10.1021/acsami.4c22130"
+    },
+    {
+      "date": "2025-02-14",
+      "title": "Atharva Raut receives Tan Endowed Graduate Fellowship",
+      "text": "Atharva Raut was awarded the Tan Endowed Graduate Fellowship for 2024–2025.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2024-04-30",
+      "title": "Eric Dubberstein receives NSF Graduate Research Fellowship",
+      "text": "Eric Dubberstein was awarded an NSF Graduate Research Fellowship.",
+      "tag": "Award",
+      "url": ""
+    },
+    {
+      "date": "2024-01-25",
+      "title": "Srimani wins Best Paper at VLSI",
+      "text": "The team won the Best Student Paper Award at the 2023 IEEE Symposium on VLSI for research on monolithic 3D integration.",
+      "tag": "Award",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10185414"
+    }
+  ]
+}

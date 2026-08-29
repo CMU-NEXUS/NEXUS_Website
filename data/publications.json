@@ -1,0 +1,266 @@
+{
+  "_comment": "Publications. Add an entry to \"items\". Fields: title, authors[], venue, year, type (journal|conference|patent), url, note, highlight(bool). The page groups by year automatically and builds filters from the data.",
+  "meta": {
+    "title": "Publications | NEXUS Research Group",
+    "description": "Peer-reviewed publications and patents from the NEXUS Research Group at Carnegie Mellon University."
+  },
+  "header": {
+    "eyebrow": "Publications",
+    "title": "Selected publications",
+    "lead": "Journal articles, conference papers, and patents from the group and its collaborators. Highlighted entries mark award-winning or flagship results.",
+    "scholarLink": { "label": "Full list on Google Scholar", "href": "https://scholar.google.com/citations?user=NVcyQ3wAAAAJ" }
+  },
+  "piName": "T. Srimani",
+  "items": [
+    {
+      "title": "Pushing the Boundary of Quantum Advantage in Hard Combinatorial Optimization with Probabilistic Computers",
+      "authors": ["S. Chowdhury", "N. A. Aadit", "A. Grimaldi", "E. Raimondo", "A. Raut", "P. A. Lott", "J. H. Mentink", "M. M. Rams", "F. Ricci-Tersenghi", "M. Chiappini", "L. S. Theogarajan", "T. Srimani", "G. Finocchio", "M. Mohseni", "K. Y. Camsari"],
+      "venue": "Nature Communications",
+      "year": 2025,
+      "type": "journal",
+      "url": "",
+      "note": "To appear",
+      "highlight": true
+    },
+    {
+      "title": "Scalable Connectivity for Ising Machines: Dense to Sparse",
+      "authors": ["M. M. H. Sajeeb", "N. A. Aadit", "S. Chowdhury", "T. Wu", "C. Smith", "D. Chinmay", "A. Raut", "K. Y. Camsari", "C. Delacour", "T. Srimani"],
+      "venue": "Physical Review Applied, vol. 24, 014005",
+      "year": 2025,
+      "type": "journal",
+      "url": "https://journals.aps.org/prapplied/abstract/10.1103/kx8m-5h3h",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Probabilistic Bits using Perimeter-Gated Single Photon Avalanche Diodes",
+      "authors": ["M. S. Sajal", "T. Wu", "M. Dandin", "T. Srimani"],
+      "venue": "IEEE Electron Device Letters, vol. 46, no. 8, pp. 1417–1420",
+      "year": 2025,
+      "type": "journal",
+      "url": "https://ieeexplore.ieee.org/abstract/document/11028048",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Overcoming Ambient Drift and Negative-Bias Temperature Instability in Foundry Carbon Nanotube Transistors",
+      "authors": ["A. C. Yu", "T. Srimani", "M. Shulaker"],
+      "venue": "ACS Applied Materials & Interfaces",
+      "year": 2025,
+      "type": "journal",
+      "url": "https://pubs.acs.org/doi/full/10.1021/acsami.4c22130",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Omni 3D: BEOL-Compatible 3-D Logic With Omnipresent Power, Signal, and Clock",
+      "authors": ["S. Choi", "C. Gilardi", "P. Gutwin", "R. M. Radway", "T. Srimani", "S. Mitra"],
+      "venue": "IEEE Transactions on Electron Devices",
+      "year": 2025,
+      "type": "journal",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10902043",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Efficient Ultra-Dense 3D IC Power Delivery and Cooling Using 3D Thermal Scaffolding",
+      "authors": ["D. Rich", "T. Srimani", "M. Malakoutian", "S. Chowdhury", "S. Mitra"],
+      "venue": "IEEE/ACM International Conference on Computer-Aided Design (ICCAD)",
+      "year": 2024,
+      "type": "conference",
+      "url": "https://dl.acm.org/doi/abs/10.1145/3676536.3676760",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Barrier Booster for Remote Extension Doping and its DTCO in 1D & 2D FETs",
+      "authors": ["C. Gilardi", "G. Zeevi", "S. Choi", "S. Su", "T. Hung", "S. Li", "N. Safron", "Q. Lin", "T. Srimani", "M. Passlack", "G. Pitner", "E. Chen", "I. Radu", "H.-S. P. Wong", "S. Mitra"],
+      "venue": "IEEE International Electron Devices Meeting (IEDM)",
+      "year": 2023,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10413727",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "N3XT 3D Technology Foundations and Their Lab-to-Fab: Omni 3D Logic, Logic+Memory, Ultra-Dense 3D, 3D Thermal Scaffolding",
+      "authors": ["T. Srimani", "A. Bechdolt", "S. Choi", "C. Gilardi", "A. Kasperovich", "S. Li", "Q. Lin", "M. Malakoutian", "P. McEwen", "R. M. Radway", "D. Rich", "A. C. Yu", "S. Fuller", "S. Achour", "S. Chowdhury", "H.-S. P. Wong", "M. Shulaker", "S. Mitra"],
+      "venue": "IEEE International Electron Devices Meeting (IEDM)",
+      "year": 2023,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10413794",
+      "note": "Invited",
+      "highlight": true
+    },
+    {
+      "title": "Ultra-Dense 3D Physical Design Enables New Architectural Design Points with Large Benefits",
+      "authors": ["T. Srimani", "R. M. Radway", "K. Prabhu", "J. Kim", "et al."],
+      "venue": "Design, Automation & Test in Europe Conference (DATE)",
+      "year": 2023,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10137051",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Foundry Monolithic 3D BEOL Transistor + Memory Stack: Iso-Performance and Iso-Footprint BEOL Carbon Nanotube FET+RRAM vs. FEOL Silicon FET+RRAM",
+      "authors": ["T. Srimani", "A. C. Yu", "R. M. Radway", "D. Rich", "M. Nelson", "S. Wong", "D. Murphy", "S. Fuller", "G. Hills", "S. Mitra", "M. Shulaker"],
+      "venue": "IEEE Symposium on VLSI Technology",
+      "year": 2023,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/10185414",
+      "note": "Technology Focus Session · Best Student Paper Award",
+      "highlight": true
+    },
+    {
+      "title": "Comprehensive Study on High Purity Semiconducting Carbon Nanotube Extraction",
+      "authors": ["T. Srimani", "A. C. Yu", "J. Ding", "et al."],
+      "venue": "Advanced Electronic Materials",
+      "year": 2022,
+      "type": "journal",
+      "url": "https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/aelm.202101377",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Lift-off-Free Complementary Carbon Nanotube FETs Fabricated with Conventional Processing in a Silicon Foundry",
+      "authors": ["T. Srimani", "A. C. Yu", "M. Shulaker"],
+      "venue": "IEEE VLSI Technology, Systems and Applications (VLSI-TSA)",
+      "year": 2022,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/9771013",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Foundry Integration of Carbon Nanotube FETs at the 90 nm Node with New Lift-off-Free Process",
+      "authors": ["A. C. Yu", "T. Srimani"],
+      "venue": "IEEE Electron Device Letters, vol. 43, no. 3, pp. 486–489",
+      "year": 2022,
+      "type": "journal",
+      "url": "https://ieeexplore.ieee.org/abstract/document/9686743",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Heterogeneous Integration of BEOL Logic and Memory in a Commercial Foundry: Multi-tier Complementary Carbon Nanotube Logic and Resistive RAM at a 130 nm Node",
+      "authors": ["T. Srimani", "G. Hills", "M. D. Bishop", "C. Lau", "et al."],
+      "venue": "IEEE Symposium on VLSI Technology and Circuits, pp. 1–2",
+      "year": 2020,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/9265083",
+      "note": "",
+      "highlight": true
+    },
+    {
+      "title": "Manufacturing Methodology for Carbon Nanotube Electronics",
+      "authors": ["C. Lau", "G. Hills", "M. D. Bishop", "T. Srimani", "R. Ho", "P. Kanhaiya", "A. C. Yu", "A. Amer", "M. Chao", "M. M. Shulaker"],
+      "venue": "IEEE VLSI-TSA, pp. 134–135",
+      "year": 2020,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/9203734",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Advances in Carbon Nanotube Technologies: From Transistors to a RISC-V Microprocessor",
+      "authors": ["G. Hills", "C. Lau", "T. Srimani", "M. D. Bishop", "P. Kanhaiya", "R. Ho", "A. Amer", "M. M. Shulaker"],
+      "venue": "International Symposium on Physical Design (ISPD), pp. 33–38",
+      "year": 2020,
+      "type": "conference",
+      "url": "https://dl.acm.org/doi/abs/10.1145/3372780.3378170",
+      "note": "Invited",
+      "highlight": false
+    },
+    {
+      "title": "Fabrication of Carbon Nanotube Field-Effect Transistors in Commercial Silicon Manufacturing Facilities",
+      "authors": ["M. D. Bishop", "G. Hills", "T. Srimani", "C. Lau", "et al."],
+      "venue": "Nature Electronics, vol. 3, no. 8, pp. 492–501",
+      "year": 2020,
+      "type": "journal",
+      "url": "https://www.nature.com/articles/s41928-020-0419-7",
+      "note": "",
+      "highlight": true
+    },
+    {
+      "title": "Modern Microprocessor Built from Complementary Carbon Nanotube Transistors",
+      "authors": ["G. Hills", "C. Lau", "A. Wright", "S. Fuller", "M. D. Bishop", "T. Srimani", "P. Kanhaiya", "et al."],
+      "venue": "Nature, vol. 572, no. 7771, pp. 595–602",
+      "year": 2019,
+      "type": "journal",
+      "url": "https://www.nature.com/articles/s41586-019-1493-8",
+      "note": "Cover article",
+      "highlight": true
+    },
+    {
+      "title": "Monolithic Three-Dimensional Imaging System: Carbon Nanotube Computing Circuitry Integrated Directly Over Silicon Imager",
+      "authors": ["T. Srimani", "G. Hills", "C. Lau", "M. Shulaker"],
+      "venue": "IEEE Symposium on VLSI Technology, pp. T24–T25",
+      "year": 2019,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/8776514",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Asymmetric Gating for Reducing Leakage Current in Carbon Nanotube Field-Effect Transistors",
+      "authors": ["T. Srimani", "G. Hills", "X. Zhao", "D. Antoniadis", "J. A. del Alamo", "M. M. Shulaker"],
+      "venue": "Applied Physics Letters, vol. 115, no. 6, p. 063107",
+      "year": 2019,
+      "type": "journal",
+      "url": "https://pubs.aip.org/aip/apl/article/115/6/063107/37935",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "30-nm Contacted Gate Pitch Back-Gate Carbon Nanotube FETs for Sub-3-nm Nodes",
+      "authors": ["T. Srimani", "G. Hills", "M. D. Bishop", "M. M. Shulaker"],
+      "venue": "IEEE Transactions on Nanotechnology, vol. 18, pp. 132–138",
+      "year": 2018,
+      "type": "journal",
+      "url": "https://ieeexplore.ieee.org/abstract/document/8591963",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Tunable n-Type Doping of Carbon Nanotubes through Engineered Atomic Layer Deposition HfOx Films",
+      "authors": ["C. Lau", "G. Hills", "M. D. Bishop", "T. Srimani", "A. C. Yu", "M. M. Shulaker"],
+      "venue": "ACS Nano, vol. 12, no. 11, pp. 10924–10931",
+      "year": 2018,
+      "type": "journal",
+      "url": "https://pubs.acs.org/doi/full/10.1021/acsnano.8b04208",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Negative Capacitance Carbon Nanotube FETs",
+      "authors": ["T. Srimani", "G. Hills", "M. D. Bishop", "M. M. Shulaker"],
+      "venue": "IEEE Electron Device Letters, vol. 39, no. 2, pp. 304–307",
+      "year": 2017,
+      "type": "journal",
+      "url": "https://ieeexplore.ieee.org/abstract/document/8172046",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Robust and High Sensitivity Biosensor using Injection Locked Spin Torque Nano-Oscillators",
+      "authors": ["T. Srimani", "B. Manna", "A. K. Mukhopadhyay", "K. Roy", "M. Sharad"],
+      "venue": "IEEE Device Research Conference (DRC), pp. 1–2",
+      "year": 2016,
+      "type": "conference",
+      "url": "https://ieeexplore.ieee.org/abstract/document/7548461",
+      "note": "",
+      "highlight": false
+    },
+    {
+      "title": "Back-Gate Field-Effect Transistors and Methods for Making the Same",
+      "authors": ["M. Shulaker", "T. Srimani", "S. Fuller", "Y. Stein", "D. Murphy"],
+      "venue": "U.S. Patent 11,626,486 — issued April 11, 2023",
+      "year": 2023,
+      "type": "patent",
+      "url": "https://patents.google.com/patent/US11626486B2/en",
+      "note": "",
+      "highlight": false
+    }
+  ]
+}

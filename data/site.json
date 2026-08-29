@@ -1,0 +1,69 @@
+{
+  "_comment": "Global site chrome: branding, navigation, footer, theme defaults. Edit here to change every page at once.",
+  "brand": {
+    "acronym": "NEXUS",
+    "name": "NEXUS Research Group",
+    "expansion": "Nanoelectronics EXpeditions for Ubiquitous Systems",
+    "tagline": "Designing Future Computing Hardware with New Technologies, Circuits, and Architectures",
+    "logoMark": "N",
+    "favicon": "⬢"
+  },
+  "institution": {
+    "department": "Electrical and Computer Engineering",
+    "university": "Carnegie Mellon University",
+    "universityShort": "Carnegie Mellon",
+    "url": "https://www.cmu.edu/ece/",
+    "sourceUrl": "https://www.cmu.edu/ece/nexus/"
+  },
+  "nav": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "People", "href": "people.html" },
+    { "label": "Publications", "href": "publications.html" },
+    { "label": "Blog", "href": "blog.html" },
+    { "label": "Join", "href": "join.html" },
+    { "label": "Contact", "href": "contact.html" }
+  ],
+  "navCta": { "label": "Join the Lab", "href": "join.html" },
+  "footer": {
+    "blurb": "The NEXUS Research Group explores cross-stack advances in semiconductor technologies, heterogeneous integration, circuit design, and computer architecture for large improvements in computing energy efficiency and throughput.",
+    "columns": [
+      {
+        "title": "Explore",
+        "links": [
+          { "label": "Research", "href": "index.html#research" },
+          { "label": "People", "href": "people.html" },
+          { "label": "Publications", "href": "publications.html" },
+          { "label": "Blog & News", "href": "blog.html" }
+        ]
+      },
+      {
+        "title": "Connect",
+        "links": [
+          { "label": "Open Positions", "href": "join.html" },
+          { "label": "Contact Us", "href": "contact.html" },
+          { "label": "CMU ECE", "href": "https://www.cmu.edu/ece/", "external": true },
+          { "label": "Google Scholar", "href": "https://scholar.google.com/citations?user=NVcyQ3wAAAAJ", "external": true }
+        ]
+      }
+    ],
+    "address": [
+      "NEXUS Research Group",
+      "Hamerschlag Hall 2124",
+      "5000 Forbes Avenue",
+      "Pittsburgh, PA 15213"
+    ],
+    "email": "tsrimani@andrew.cmu.edu",
+    "copyright": "NEXUS Research Group, Carnegie Mellon University.",
+    "legal": "Content adapted from the group's departmental pages. Site is JSON-driven — edit files in /data to update."
+  },
+  "social": [
+    { "label": "Email", "icon": "mail", "href": "mailto:tsrimani@andrew.cmu.edu" },
+    { "label": "Google Scholar", "icon": "scholar", "href": "https://scholar.google.com/citations?user=NVcyQ3wAAAAJ" },
+    { "label": "Website", "icon": "link", "href": "https://tsrimani.github.io/" },
+    { "label": "CMU ECE", "icon": "building", "href": "https://www.cmu.edu/ece/" }
+  ],
+  "theme": {
+    "default": "system",
+    "allowToggle": true
+  }
+}

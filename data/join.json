@@ -1,0 +1,97 @@
+{
+  "_comment": "Join / sign-up page. The form is generated entirely from \"form.fields\". Set form.endpoint to a POST URL (e.g. Formspree, Getform, a Google Apps Script) to receive submissions; leave it empty and the form falls back to composing a pre-filled email to form.fallbackEmail.",
+  "meta": {
+    "title": "Join the Lab | NEXUS Research Group",
+    "description": "Open positions and the research interest form for the NEXUS Research Group at Carnegie Mellon University."
+  },
+  "header": {
+    "eyebrow": "Join us",
+    "title": "We are building the group",
+    "lead": "We are looking for passionate undergraduate, graduate, and postdoctoral researchers to build the group. If you want to work across devices, circuits, CAD, and architecture, we would like to hear from you."
+  },
+  "positions": [
+    {
+      "id": "phd",
+      "title": "PhD Students",
+      "status": "Recruiting",
+      "summary": "Apply through the CMU ECE doctoral program.",
+      "details": [
+        "Prospective PhD students must apply through the formal PhD program in Carnegie Mellon's Department of Electrical and Computer Engineering. Please mention NEXUS and Dr. Srimani in your statement of purpose.",
+        "Applicants are strongly encouraged to apply for external fellowships (NSF GRFP, NDSEG, Qualcomm Innovation Fellowship and similar). Several current group members hold them."
+      ],
+      "action": { "label": "CMU ECE PhD admissions", "href": "https://www.cmu.edu/ece/", "external": true }
+    },
+    {
+      "id": "postdoc",
+      "title": "Postdoctoral Researchers",
+      "status": "Open",
+      "summary": "Email Dr. Srimani directly with a CV.",
+      "details": [
+        "Postdoctoral candidates should contact Dr. Tathagata Srimani directly by email with a CV and a short note on research interests and fit with the group's thrusts."
+      ],
+      "action": { "label": "Email Dr. Srimani", "href": "mailto:tsrimani@andrew.cmu.edu?subject=Postdoctoral%20inquiry%20%E2%80%94%20NEXUS%20Research%20Group", "external": true }
+    },
+    {
+      "id": "students",
+      "title": "CMU Undergraduate & Master's Students",
+      "status": "Open",
+      "summary": "Currently enrolled CMU students — fill in the interest form below.",
+      "details": [
+        "Undergraduate and master's applicants must be currently enrolled CMU students.",
+        "The interest form on this page is the primary application pathway. No prior fabrication or CAD experience is required — tell us what you have worked on and what you would like to learn."
+      ],
+      "action": { "label": "Go to the form", "href": "#interest-form", "external": false }
+    }
+  ],
+  "expectations": {
+    "enabled": true,
+    "title": "What we look for",
+    "items": [
+      "Comfort working at the boundary between device physics, circuits, CAD, and computer architecture — nobody arrives fluent in all four.",
+      "Interest in building tooling and infrastructure that outlasts a single paper.",
+      "Willingness to test ideas quickly and discard the ones that do not hold up.",
+      "Clear written and verbal communication across sub-fields."
+    ]
+  },
+  "form": {
+    "title": "Research interest form",
+    "lead": "Tell us a little about yourself. Fields marked with an asterisk are required.",
+    "endpoint": "",
+    "method": "POST",
+    "fallbackEmail": "tsrimani@andrew.cmu.edu",
+    "fallbackSubject": "NEXUS Research Group — Research interest form",
+    "submitLabel": "Submit interest form",
+    "successMessage": "Thank you — your interest form has been received. We read every submission and will be in touch if there is a good fit.",
+    "errorMessage": "Something went wrong submitting the form. Please email us directly at tsrimani@andrew.cmu.edu.",
+    "privacyNote": "Information you submit is used only to evaluate research fit within the group and is not shared outside it.",
+    "fields": [
+      { "name": "fullName", "label": "Full name", "type": "text", "required": true, "placeholder": "Ada Lovelace", "autocomplete": "name", "width": "half" },
+      { "name": "email", "label": "Email address", "type": "email", "required": true, "placeholder": "you@andrew.cmu.edu", "autocomplete": "email", "width": "half" },
+      { "name": "affiliation", "label": "Current institution", "type": "text", "required": true, "placeholder": "Carnegie Mellon University", "width": "half" },
+      { "name": "level", "label": "Position of interest", "type": "select", "required": true, "width": "half",
+        "options": ["PhD student", "Postdoctoral researcher", "Master's student (CMU)", "Undergraduate student (CMU)", "Visiting researcher", "Other"] },
+      { "name": "startTerm", "label": "Earliest start", "type": "select", "required": false, "width": "half",
+        "options": ["Immediately", "Spring semester", "Summer", "Fall semester", "Flexible"] },
+      { "name": "hours", "label": "Availability (hours per week)", "type": "select", "required": false, "width": "half",
+        "options": ["Under 10", "10–20", "20–30", "Full time"] },
+      { "name": "interests", "label": "Research areas of interest", "type": "checkboxes", "required": true, "width": "full",
+        "options": ["3D integration", "Technology–architecture co-design", "Domain-specific accelerators", "Device fabrication & characterization", "CAD / design automation", "Probabilistic computing"] },
+      { "name": "skills", "label": "Relevant skills and tools", "type": "text", "required": false, "width": "full", "placeholder": "e.g. Verilog, Cadence Virtuoso, Python, cleanroom processing, PyTorch" },
+      { "name": "links", "label": "CV, website, or GitHub", "type": "url", "required": false, "width": "full", "placeholder": "https://" },
+      { "name": "message", "label": "Why NEXUS?", "type": "textarea", "required": true, "rows": 6, "width": "full",
+        "placeholder": "Tell us what you have worked on, what you would like to work on here, and anything else we should know.",
+        "help": "A few honest sentences are worth more than a polished paragraph." },
+      { "name": "consent", "label": "I agree that the group may store this submission to evaluate research fit.", "type": "checkbox", "required": true, "width": "full" }
+    ]
+  },
+  "faq": {
+    "enabled": true,
+    "title": "Before you write to us",
+    "items": [
+      { "q": "I am not a CMU student — can I still use the form?", "a": "The interest form is intended for prospective PhD applicants, postdocs, and currently enrolled CMU undergraduate and master's students. External undergraduate and master's applicants should apply through CMU admissions first." },
+      { "q": "Do I need fabrication experience?", "a": "No. Group members come from device physics, circuits, CAD, and architecture backgrounds. What matters is willingness to learn at the boundaries between them." },
+      { "q": "Should I email Dr. Srimani directly?", "a": "Postdoctoral candidates should. PhD applicants should apply through the department and mention the group in their statement; a separate email is not required. Current CMU students should use the form on this page." },
+      { "q": "How long until I hear back?", "a": "We read every submission but cannot reply to all of them individually. If there is a good fit for a current project, you will hear from us." }
+    ]
+  }
+}
