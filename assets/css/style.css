@@ -436,7 +436,9 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
   display: grid;
   gap: clamp(16px, 2.4vw, 32px);
   transform-style: preserve-3d;
-  transform: rotateX(calc(54deg + var(--tilt-y, 0deg))) rotateZ(calc(-38deg + var(--tilt-x, 0deg)));
+  transform:
+    rotateX(calc(var(--p, 0) * (54deg + var(--tilt-y, 0deg))))
+    rotateZ(calc(var(--p, 0) * (-38deg + var(--tilt-x, 0deg))));
 }
 .hero-tier {
   position: relative;
@@ -454,7 +456,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
     0 0 34px var(--tier-glow),
     inset 0 1px 0 var(--tier-sheen),
     inset 0 0 44px var(--tier-inner);
-  transform: translateZ(var(--z, 0));
+  transform: translateZ(calc(var(--p, 0) * var(--z, 0px)));
   transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s var(--ease), opacity .3s var(--ease);
 }
 .hero-tier::after {
@@ -472,7 +474,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
 .tier-sub { position: relative; z-index: 1; font-family: var(--font-mono); font-size: clamp(.56rem, .7vw, .68rem); letter-spacing: .05em; color: var(--muted); }
 
 .hero-tier:hover, .hero-tier[data-active="true"], .hero-tier:focus-visible {
-  transform: translateZ(calc(var(--z, 0px) + 48px));
+  transform: translateZ(calc(var(--p, 0) * var(--z, 0px) + 48px));
   border-color: var(--tier-edge-hot);
   box-shadow:
     0 34px 56px -18px var(--tier-shadow),
@@ -569,7 +571,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
   .hero-panel .hero-hint { display: none; }
   .stats.hero-stats { opacity: 1; }
   .hero-tier { height: clamp(70px, 15vw, 104px); }
-  .hero-stack { transform: rotateX(48deg) rotateZ(-30deg); }
+  .hero-stack { transform: none; }
   .tier-label { font-size: .82rem; }
   .tier-sub { font-size: .62rem; }
 }
