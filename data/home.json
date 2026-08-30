@@ -5,7 +5,7 @@
     "description": "NEXUS: Nanoelectronics EXpeditions for Ubiquitous Systems. Designing future computing hardware with new technologies, circuits, and architectures at Carnegie Mellon ECE."
   },
   "hero": {
-    "_comment": "Minimal hero: the wordmark tracks the pointer over a generated circuit field, a glowing 3D stack, and the stats strip floating at its foot.",
+    "_comment": "Hero scene: the wordmark sits on the left, the three research tiers stack on the right, and they slide to centre and magnify as you scroll. Hovering (or tapping) a tier lists its projects.",
     "enabled": true,
     "wordmark": "NEXUS",
     "expansion": "Nanoelectronics EXpeditions for Ubiquitous Systems",
@@ -14,9 +14,47 @@
       "name": "Tathagata Srimani",
       "href": "people.html"
     },
+    "hint": "Hover a tier to see its projects",
+    "hintTouch": "Tap a tier to see its projects",
     "graphic": {
       "type": "circuit-stack",
-      "tiers": 3
+      "tiles": [
+        {
+          "label": "3D Integration",
+          "sub": "CNFET logic · 3D RRAM",
+          "href": "index.html#3d-integration",
+          "projects": [
+            "Monolithic 3D CNFET + CMOS systems",
+            "CNFET-based RISC-V microprocessor",
+            "Dense 3D RRAM memory tiers",
+            "Thermal scaffolding for high-κ BEOL dielectrics",
+            "Power delivery networks for stacked compute tiers"
+          ]
+        },
+        {
+          "label": "Technology–Architecture Co-Design",
+          "sub": "Symbolic modelling · inverse design",
+          "href": "index.html#technology-architecture-codesign",
+          "projects": [
+            "Symbolic co-design framework",
+            "Inverse derivation of technology targets",
+            "PyTorch-to-HLS performance estimation",
+            "Folded 2D network-on-chip topologies",
+            "3D-optimised interconnect with sub-100 nm vias"
+          ]
+        },
+        {
+          "label": "Domain-Specific Accelerators",
+          "sub": "Ising machines · p-bits",
+          "href": "index.html#domain-specific-accelerators",
+          "projects": [
+            "Chimera — 16,384-spin reconfigurable Ising machine",
+            "Pegasus — scalable digital Ising machine",
+            "Probabilistic bit (p-bit) computing hardware",
+            "MCMC and Monte Carlo acceleration"
+          ]
+        }
+      ]
     }
   },
   "stats": {

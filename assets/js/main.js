@@ -550,19 +550,14 @@
 
     /* Pins sit on the keep-out boundary, like pads around a die. */
     var midX = (k.x0 + k.x1) / 2, midY = (k.y0 + k.y1) / 2, pins = [];
-    var roomX = Math.min(k.x0, cols - k.x1) >= 4;
-    var roomY = Math.min(k.y0, rows - k.y1) >= 4;
-    if (roomX) {
-      for (var y = k.y0; y <= k.y1; y += 2) {
-        pins.push([k.x0, y, -1, 0]);
-        pins.push([k.x1, y, 1, 0]);
-      }
+    var room = { left: k.x0 >= 4, right: cols - k.x1 >= 4, top: k.y0 >= 4, bottom: rows - k.y1 >= 4 };
+    for (var y = k.y0; y <= k.y1; y += 2) {
+      if (room.left) pins.push([k.x0, y, -1, 0]);
+      if (room.right) pins.push([k.x1, y, 1, 0]);
     }
-    if (roomY) {
-      for (var x = k.x0 + 2; x <= k.x1 - 2; x += 2) {
-        pins.push([x, k.y0, 0, -1]);
-        pins.push([x, k.y1, 0, 1]);
-      }
+    for (var x = k.x0 + 2; x <= k.x1 - 2; x += 2) {
+      if (room.top) pins.push([x, k.y0, 0, -1]);
+      if (room.bottom) pins.push([x, k.y1, 0, 1]);
     }
 
     pins.forEach(function (pin, i) {
@@ -613,83 +608,176 @@
 
   function heroHtml(h, stats) {
     var word = String(h.wordmark || "NEXUS");
-    var letters = word.split("").map(function (ch, i) {
-      return '<span class="hero-letter" style="--i:' + i + '">' + esc(ch) + "</span>";
+    var letters = word.split("").map(function (ch) {
+      return '<span class="hero-letter">' + esc(ch) + "</span>";
     }).join("");
-    var tiers = "";
-    for (var i = 0; i < (h.graphic && h.graphic.tiers || 3); i++) tiers += '<div class="hero-tier"></div>';
+
+    var tiles = ((h.graphic && h.graphic.tiles) || []).map(function (t, i) {
+      return '<button class="hero-tier" type="button" data-tile="' + i + '"' +
+        ' aria-controls="hero-panel" aria-expanded="false" data-active="false">' +
+        '<span class="tier-label">' + esc(t.label) + "</span>" +
+        '<span class="tier-sub">' + esc(t.sub) + "</span>" +
+      "</button>";
+    }).join("");
+
     var sub = h.sub || {};
     var name = sub.href
       ? '<a href="' + safeHref(sub.href) + '">' + esc(sub.name) + "</a>"
       : esc(sub.name);
+    var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
 
     return '<section class="hero" id="hero">' +
-      '<div class="hero-circuit hero-circuit--base" aria-hidden="true"></div>' +
-      '<div class="hero-circuit hero-circuit--live" aria-hidden="true"></div>' +
-      '<div class="hero-scene" aria-hidden="true"><div class="hero-stack">' + tiers + "</div></div>" +
-      '<div class="hero-stage">' +
-        '<h1 class="hero-word">' +
-          '<span class="sr-only">' + esc(word) + (h.expansion ? " — " + esc(h.expansion) : "") + "</span>" +
-          '<span class="hero-letters" aria-hidden="true">' + letters + "</span>" +
-        "</h1>" +
-        (sub.name ? '<p class="hero-sub">' + esc(sub.prefix || "Led by") + " " + name + "</p>" : "") +
+      '<div class="hero-rail">' +
+        '<div class="hero-scene">' +
+          '<div class="hero-circuit hero-circuit--base" aria-hidden="true"></div>' +
+          '<div class="hero-circuit hero-circuit--live" aria-hidden="true"></div>' +
+          '<div class="hero-inner">' +
+            '<div class="hero-copy">' +
+              '<h1 class="hero-word">' +
+                '<span class="sr-only">' + esc(word) + (h.expansion ? " — " + esc(h.expansion) : "") + "</span>" +
+                '<span class="hero-letters" aria-hidden="true">' + letters + "</span>" +
+              "</h1>" +
+              (sub.name ? '<p class="hero-sub">' + esc(sub.prefix || "Led by") + " " + name + "</p>" : "") +
+            "</div>" +
+            '<div class="hero-stack-wrap"><div class="hero-stack">' + tiles + "</div></div>" +
+          "</div>" +
+          '<div class="hero-panel" id="hero-panel" aria-live="polite">' +
+            '<p class="hero-hint">' + esc((touch && h.hintTouch) || h.hint || "Hover a tier to see its projects") + "</p>" +
+            '<div class="panel-body"></div>' +
+          "</div>" +
+          (stats ? '<div class="stats hero-stats">' + statsHtml(stats) + "</div>" : "") +
+        "</div>" +
       "</div>" +
-      (stats ? '<div class="stats hero-stats">' + statsHtml(stats) + "</div>" : "") +
     "</section>";
   }
 
-  function initHero() {
-    var hero = qs(".hero");
-    var stage = hero && qs(".hero-stage", hero);
-    if (!hero || !stage) return;
+  function panelHtml(t) {
+    return '<span class="panel-eyebrow">Projects</span>' +
+      '<h2 class="panel-title">' + esc(t.label) + "</h2>" +
+      '<ul class="panel-list">' + (t.projects || []).map(function (pr) {
+        return "<li>" + esc(pr) + "</li>";
+      }).join("") + "</ul>" +
+      (t.href ? '<a class="textlink" href="' + safeHref(t.href) + '">Explore the thrust<span class="arrow">' + icon("arrow", 13) + "</span></a>" : "");
+  }
 
+  function initHero(hero_data) {
+    var hero = qs(".hero");
+    var scene = hero && qs(".hero-scene", hero);
+    var copy = hero && qs(".hero-copy", hero);
+    if (!hero || !scene || !copy) return;
+
+    var rail = qs(".hero-rail", hero);
     var base = qs(".hero-circuit--base", hero);
     var live = qs(".hero-circuit--live", hero);
     var builtW = 0, builtH = 0;
 
+    /* Keep the scene exactly one viewport tall under the sticky header. */
+    function measureHeader() {
+      var header = qs(".site-header");
+      if (header) document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+    }
+
     function build() {
-      var w = Math.round(hero.clientWidth), h = Math.round(hero.clientHeight);
+      var w = Math.round(scene.clientWidth), h = Math.round(scene.clientHeight);
       if (!w || !h) return;
-      var hr = hero.getBoundingClientRect(), sr = stage.getBoundingClientRect();
-      var padX = Math.max(46, w * .045), padY = Math.max(34, h * .06);
+      var sr = scene.getBoundingClientRect(), cr = copy.getBoundingClientRect();
+      var padX = Math.max(40, w * .035), padY = Math.max(30, h * .05);
       var keep = {
-        x0: sr.left - hr.left - padX, y0: sr.top - hr.top - padY,
-        x1: sr.right - hr.left + padX, y1: sr.bottom - hr.top + padY
+        x0: cr.left - sr.left - padX, y0: cr.top - sr.top - padY,
+        x1: cr.right - sr.left + padX, y1: cr.bottom - sr.top + padY
       };
       base.innerHTML = circuitField(w, h, keep, true);
       if (live) live.innerHTML = circuitField(w, h, keep, false);
       builtW = w; builtH = h;
     }
 
+    measureHeader();
     build();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build).catch(function () {});
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { measureHeader(); build(); }).catch(function () {});
+    }
 
     var resizeTimer;
     window.addEventListener("resize", function () {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
-        if (Math.abs(hero.clientWidth - builtW) > 30 || Math.abs(hero.clientHeight - builtH) > 30) build();
+        measureHeader();
+        if (Math.abs(scene.clientWidth - builtW) > 30 || Math.abs(scene.clientHeight - builtH) > 30) build();
       }, 220);
     });
 
-    /* --- the wordmark tracks the pointer (touch input is ignored below) --- */
+    /* --- tiers: hover, focus or tap lists that thrust's projects --- */
+    var list = (hero_data && hero_data.graphic && hero_data.graphic.tiles) || [];
+    var tiers = qsa(".hero-tier", hero);
+    var panel = qs(".hero-panel", hero);
+    var body = qs(".panel-body", hero);
+    var hideTimer;
+
+    function activate(i) {
+      clearTimeout(hideTimer);
+      if (!list[i]) return;
+      body.innerHTML = panelHtml(list[i]);
+      hero.setAttribute("data-tile", String(i));
+      tiers.forEach(function (t, n) {
+        t.setAttribute("data-active", String(n === i));
+        t.setAttribute("aria-expanded", String(n === i));
+      });
+    }
+    function clearPanel() {
+      hero.removeAttribute("data-tile");
+      body.innerHTML = "";
+      tiers.forEach(function (t) { t.setAttribute("data-active", "false"); t.setAttribute("aria-expanded", "false"); });
+    }
+    function clearSoon() { clearTimeout(hideTimer); hideTimer = setTimeout(clearPanel, 180); }
+
+    tiers.forEach(function (tier, i) {
+      tier.addEventListener("mouseenter", function () { activate(i); });
+      tier.addEventListener("mouseleave", clearSoon);
+      tier.addEventListener("focus", function () { activate(i); });
+      tier.addEventListener("blur", clearSoon);
+      tier.addEventListener("click", function () {
+        if (hero.getAttribute("data-tile") === String(i)) clearPanel();
+        else activate(i);
+      });
+    });
+    if (panel) {
+      panel.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
+      panel.addEventListener("mouseleave", clearSoon);
+    }
+
+    /* --- scroll drives the stack from the side to the centre --- */
+    var flat = window.matchMedia && window.matchMedia("(max-width: 900px), (prefers-reduced-motion: reduce)");
+    var ticking = false;
+
+    function progress() {
+      ticking = false;
+      if (flat && flat.matches) {
+        hero.style.setProperty("--p", "0");
+        hero.setAttribute("data-zoom", "false");
+        return;
+      }
+      var span = rail.offsetHeight - scene.offsetHeight;
+      var raw = span > 0 ? -rail.getBoundingClientRect().top / span : 0;
+      var p = Math.max(0, Math.min(1, raw / .62));       // hold at full zoom for the last stretch
+      hero.style.setProperty("--p", p.toFixed(4));
+      hero.setAttribute("data-zoom", p > .45 ? "true" : "false");
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(progress); } }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    if (flat && flat.addEventListener) flat.addEventListener("change", onScroll);
+    progress();
+
+    /* --- the stack tilts and the traces light up under the pointer --- */
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    var letters = qsa(".hero-letter", hero);
-    var mid = (letters.length - 1) / 2;
-    var depth = letters.map(function (_, i) { return .45 + (mid ? Math.abs(i - mid) / mid : 0) * .85; });
     var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0, visible = true;
 
     function frame() {
       raf = 0;
       cx += (tx - cx) * .085;
       cy += (ty - cy) * .085;
-      for (var i = 0; i < letters.length; i++) {
-        var d = depth[i];
-        letters[i].style.transform =
-          "translate3d(" + (cx * 30 * d).toFixed(2) + "px," + (cy * 20 * d).toFixed(2) + "px,0)" +
-          " rotate(" + (cx * 1.5 * d).toFixed(2) + "deg)";
-      }
       hero.style.setProperty("--tilt-x", (cx * 8).toFixed(2) + "deg");
       hero.style.setProperty("--tilt-y", (cy * -7).toFixed(2) + "deg");
       if (Math.abs(tx - cx) > .0015 || Math.abs(ty - cy) > .0015) raf = requestAnimationFrame(frame);
@@ -697,7 +785,7 @@
 
     window.addEventListener("pointermove", function (ev) {
       if (!visible || ev.pointerType === "touch") return;
-      var r = hero.getBoundingClientRect();
+      var r = scene.getBoundingClientRect();
       var mx = ev.clientX - r.left, my = ev.clientY - r.top;
       var inside = mx >= 0 && my >= 0 && mx <= r.width && my <= r.height;
       hero.setAttribute("data-pointer", String(inside));
@@ -714,7 +802,7 @@
       new IntersectionObserver(function (entries) {
         visible = entries[0].isIntersecting;
         if (!visible) { tx = ty = 0; if (!raf) raf = requestAnimationFrame(frame); hero.setAttribute("data-pointer", "false"); }
-      }, { threshold: 0 }).observe(hero);
+      }, { threshold: 0 }).observe(scene);
     }
   }
 
@@ -796,7 +884,7 @@
     }
 
     qs("main").innerHTML = out.join("");
-    initHero();
+    initHero(home.hero);
 
     qsa(".area-toggle").forEach(function (btn) {
       btn.addEventListener("click", function () {
