@@ -92,7 +92,7 @@
     ]
   },
   "about": {
-    "enabled": true,
+    "enabled": false,
     "eyebrow": "About the group",
     "title": "Hardware systems for an abundant-data world",
     "paragraphs": [
@@ -103,7 +103,8 @@
       "First CNFET-based RISC-V microprocessor, and the first CNFET + CMOS monolithic-3D system",
       "Symbolic co-design that derives technology targets from application goals",
       "Probabilistic computing ASICs for NP-hard optimization"
-    ]
+    ],
+    "_comment": "Hidden: the hero panel now carries this blurb. Set \"enabled\": true to bring the section back."
   },
   "research": {
     "enabled": true,
