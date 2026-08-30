@@ -608,8 +608,10 @@
 
   function heroHtml(h, stats) {
     var word = String(h.wordmark || "NEXUS");
-    var letters = word.split("").map(function (ch) {
-      return '<span class="hero-letter">' + esc(ch) + "</span>";
+    var letters = word.split(/\s+/).filter(Boolean).map(function (part) {
+      return '<span class="hero-line">' + part.split("").map(function (ch) {
+        return '<span class="hero-letter">' + esc(ch) + "</span>";
+      }).join("") + "</span>";
     }).join("");
 
     var tiles = ((h.graphic && h.graphic.tiles) || []).map(function (t, i) {
@@ -1080,17 +1082,18 @@
     var tldrLabel = L.tldr || "TL;DR";
     var ctaLabel = L.cta || "Read the full post";
 
-    var all = (blog.posts || []);
-    var featured = all.filter(function (p) { return p.kind !== "chapter"; });
-    var chapters = all.filter(function (p) { return p.kind === "chapter"; });
+    var posts = (blog.posts || []).slice().sort(sortByDateDesc);
+    /* A handful of posts read better as full-width features; a longer run wants a grid. */
+    var wide = posts.length <= 2;
 
     var allTags = [];
-    all.forEach(function (p) { (p.tags || []).forEach(function (t) { if (allTags.indexOf(t) === -1) allTags.push(t); }); });
+    posts.forEach(function (p) {
+      (p.tags || []).forEach(function (t) { if (allTags.indexOf(t) === -1) allTags.push(t); });
+    });
+    var showFilter = posts.length >= 4 && allTags.length >= 2;
 
     function tile(p) {
-      var isFeatured = p.kind !== "chapter";
       var meta = [];
-      if (p.part) meta.push(esc(p.part));
       if (p.date) meta.push(fmtDate(p.date));
       if (p.author) meta.push(esc(p.author));
       if (p.readingTime) meta.push(esc(p.readingTime));
@@ -1099,14 +1102,11 @@
         return '<a class="btn btn--ghost btn--sm" href="' + safeHref(l.href) + '" target="_blank" rel="noopener noreferrer">' + esc(l.label) + "</a>";
       }).join("");
 
-      return '<article class="tile' + (isFeatured ? " tile--featured" : "") + '" data-reveal>' +
+      return '<article class="tile' + (wide ? " tile--featured" : "") + '" data-reveal>' +
         (meta.length ? '<div class="tile-meta">' + meta.join('<span class="dot" aria-hidden="true">·</span>') + "</div>" : "") +
         "<h3>" + esc(p.title) + "</h3>" +
         (p.subtitle ? '<p class="tile-sub">' + esc(p.subtitle) + "</p>" : "") +
-        '<div class="tldr">' +
-          '<span class="tldr-label">' + esc(tldrLabel) + "</span>" +
-          "<p>" + esc(p.tldr) + "</p>" +
-        "</div>" +
+        (p.tldr ? '<div class="tldr"><span class="tldr-label">' + esc(tldrLabel) + "</span><p>" + esc(p.tldr) + "</p></div>" : "") +
         ((p.tags || []).length ? '<div class="tag-row">' + p.tags.map(function (t) { return '<span class="tag">' + esc(t) + "</span>"; }).join("") + "</div>" : "") +
         '<div class="tile-actions">' +
           '<a class="btn btn--primary btn--sm" href="' + safeHref(p.url) + '" target="_blank" rel="noopener noreferrer">' +
@@ -1125,23 +1125,12 @@
       "</div>" +
 
       '<div id="panel-blog" role="tabpanel" aria-labelledby="tab-blog">' +
-        (allTags.length > 1 ?
+        (showFilter ?
           '<div class="chip-row" id="tag-chips" style="margin-bottom:1.75rem" role="group" aria-label="Filter by topic">' +
             '<button class="chip" type="button" data-tag="all" aria-pressed="true">All topics</button>' +
             allTags.map(function (t) { return '<button class="chip" type="button" data-tag="' + esc(t) + '" aria-pressed="false">' + esc(t) + "</button>"; }).join("") +
           "</div>" : "") +
-
-        '<div id="featured-list" class="tile-grid tile-grid--wide"></div>' +
-
-        (chapters.length ?
-          '<div id="chapters-block">' +
-            '<div class="section-head" style="margin-top:3.25rem;margin-bottom:1.5rem">' +
-              "<h2>" + esc(L.chaptersTitle || "Inside the post") + "</h2>" +
-              (L.chaptersLead ? '<p class="lead">' + esc(L.chaptersLead) + "</p>" : "") +
-            "</div>" +
-            '<div id="chapter-list" class="tile-grid"></div>' +
-          "</div>" : "") +
-
+        '<div id="post-list" class="tile-grid' + (wide ? " tile-grid--wide" : "") + '"></div>' +
         '<div id="tile-empty"></div>' +
       "</div>" +
 
@@ -1167,15 +1156,9 @@
     function matches(p) { return tag === "all" || (p.tags || []).indexOf(tag) !== -1; }
 
     function renderTiles() {
-      var f = featured.filter(matches);
-      var c = chapters.filter(matches);
-      el("featured-list").innerHTML = f.map(tile).join("");
-      var chapterBlock = el("chapters-block");
-      if (chapterBlock) {
-        el("chapter-list").innerHTML = c.map(tile).join("");
-        chapterBlock.hidden = c.length === 0;
-      }
-      el("tile-empty").innerHTML = (f.length + c.length) ? "" :
+      var shown = posts.filter(matches);
+      el("post-list").innerHTML = shown.map(tile).join("");
+      el("tile-empty").innerHTML = shown.length ? "" :
         '<div class="empty-state"><strong>Nothing here yet</strong>No posts match that topic.</div>';
       reveal();
     }

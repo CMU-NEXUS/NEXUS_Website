@@ -400,7 +400,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
 }
 .hero[data-zoom="true"] .hero-copy { pointer-events: none; }
 .hero-word { margin: 0; line-height: .86; }
-.hero-letters { display: flex; }
+.hero-letters { display: flex; flex-direction: column; align-items: flex-start; }
+.hero-line { display: flex; }
 .hero-letter {
   display: block;
   font-size: clamp(2.9rem, 7.6vw, 6.4rem);
@@ -409,7 +410,7 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
   color: var(--text-strong);
   text-shadow: 0 0 70px var(--word-glow);
 }
-.hero-letters .hero-letter:last-child { margin-right: -.045em; }
+.hero-line .hero-letter:last-child { margin-right: -.045em; }
 .hero-sub {
   margin: clamp(.9rem, 2vw, 1.35rem) 0 0;
   font-family: var(--font-mono);

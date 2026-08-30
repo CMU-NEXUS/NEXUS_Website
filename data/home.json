@@ -7,7 +7,7 @@
   "hero": {
     "_comment": "Hero scene: the wordmark sits on the left, the three research tiers stack on the right, and they slide to centre and magnify as you scroll. Hovering (or tapping) a tier lists its projects.",
     "enabled": true,
-    "wordmark": "NEXUS",
+    "wordmark": "NEXUS LAB",
     "expansion": "Nanoelectronics EXpeditions for Ubiquitous Systems",
     "sub": {
       "prefix": "Led by",
