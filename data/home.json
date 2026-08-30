@@ -5,31 +5,43 @@
     "description": "NEXUS: Nanoelectronics EXpeditions for Ubiquitous Systems. Designing future computing hardware with new technologies, circuits, and architectures at Carnegie Mellon ECE."
   },
   "hero": {
+    "_comment": "Minimal hero: the wordmark tracks the pointer over a generated circuit field, a glowing 3D stack, and the stats strip floating at its foot.",
     "enabled": true,
-    "eyebrow": "Carnegie Mellon University · Electrical & Computer Engineering",
-    "title": "Designing future computing hardware with new technologies, circuits, and architectures",
-    "lead": "NEXUS — Nanoelectronics EXpeditions for Ubiquitous Systems — explores cross-stack advances in semiconductor technologies, heterogeneous integration, circuit design, and computer architecture for large improvements in computing energy efficiency and throughput.",
-    "actions": [
-      { "label": "Explore our research", "href": "#research", "style": "primary" },
-      { "label": "Meet the group", "href": "people.html", "style": "ghost" }
-    ],
+    "wordmark": "NEXUS",
+    "expansion": "Nanoelectronics EXpeditions for Ubiquitous Systems",
+    "sub": {
+      "prefix": "Led by",
+      "name": "Tathagata Srimani",
+      "href": "people.html"
+    },
     "graphic": {
-      "type": "stack",
-      "caption": "Ultra-dense 3D logic + memory integration",
-      "layers": [
-        { "label": "Compute tier", "sub": "CNFET logic" },
-        { "label": "Memory tier", "sub": "3D RRAM" },
-        { "label": "Silicon base", "sub": "CMOS + power delivery" }
-      ]
+      "type": "circuit-stack",
+      "tiers": 3
     }
   },
   "stats": {
     "enabled": true,
     "items": [
-      { "value": "3", "label": "Research thrusts", "detail": "From devices to architecture" },
-      { "value": "9", "label": "Group members", "detail": "PhD, MS, and undergraduate" },
-      { "value": "20+", "label": "Publications", "detail": "Nature, IEDM, VLSI, ISCA, DATE" },
-      { "value": "2026", "label": "NSF CAREER Award", "detail": "Awarded to Prof. Srimani" }
+      {
+        "value": "3",
+        "label": "Research thrusts",
+        "detail": "From devices to architecture"
+      },
+      {
+        "value": "9",
+        "label": "Group members",
+        "detail": "PhD, MS, and undergraduate"
+      },
+      {
+        "value": "20+",
+        "label": "Publications",
+        "detail": "Nature, IEDM, VLSI, ISCA, DATE"
+      },
+      {
+        "value": "2026",
+        "label": "NSF CAREER Award",
+        "detail": "Awarded to Prof. Srimani"
+      }
     ]
   },
   "about": {
@@ -37,21 +49,20 @@
     "eyebrow": "About the group",
     "title": "Hardware systems for an abundant-data world",
     "paragraphs": [
-      "The NEXUS Research Group is focused on advancing the field of hardware systems to support the growing computational needs of today's abundant-data applications. Large language models, edge AI, and scientific computing are demanding orders of magnitude more compute than traditional transistor miniaturization can deliver.",
-      "We attack that gap across the whole stack at once. New nanoelectronic devices, dense three-dimensional integration, co-designed circuits, and domain-specific architectures are far more powerful together than any of them is alone — so we build the tools, the silicon, and the design methodologies that let them be designed together.",
-      "The group is led by Dr. Tathagata Srimani in the Department of Electrical and Computer Engineering at Carnegie Mellon University, and works closely with collaborators across academia, national labs, and industry foundries."
+      "Abundant-data workloads — large language models, edge AI, scientific computing — now demand orders of magnitude more compute than transistor scaling alone can deliver.",
+      "We close that gap across the whole stack at once: new nanoelectronic devices, dense 3D integration, co-designed circuits, and domain-specific architectures, built together rather than one at a time."
     ],
     "highlights": [
-      "First CNFET-based RISC-V microprocessor and first CNFET + CMOS monolithic-3D system, transitioned to industrial fabrication",
-      "Symbolic co-design frameworks that derive technology targets from application-level performance goals",
-      "Probabilistic computing ASICs for NP-hard optimization problems"
+      "First CNFET-based RISC-V microprocessor, and the first CNFET + CMOS monolithic-3D system",
+      "Symbolic co-design that derives technology targets from application goals",
+      "Probabilistic computing ASICs for NP-hard optimization"
     ]
   },
   "research": {
     "enabled": true,
     "eyebrow": "Research",
     "title": "Three thrusts, one stack",
-    "lead": "Our work spans emerging devices to full systems. Each thrust below feeds the others — technology informs architecture, and architecture sets the targets technology has to hit.",
+    "lead": "Devices, circuits, and architecture, designed together — each thrust sets the targets the others have to hit.",
     "areas": [
       {
         "id": "3d-integration",
@@ -63,7 +74,13 @@
           "We develop monolithic 3D systems that combine high-performance logic with dense, low-energy memory in stacked tiers, including carbon nanotube FETs (CNFETs) for performance at low voltages alongside 3D resistive RAM (RRAM). These architectures substantially reduce data-movement overhead and improve energy-delay for AI accelerators relative to conventional 2D systems.",
           "As stacking scales, thermal management and power delivery become the binding constraints. We co-design high-thermal-conductivity back-end-of-line dielectrics with optimized power delivery networks so that multiple high-power 3D compute tiers can actually be built."
         ],
-        "tags": ["Monolithic 3D", "CNFET", "RRAM", "Thermal scaffolding", "Power delivery"]
+        "tags": [
+          "Monolithic 3D",
+          "CNFET",
+          "RRAM",
+          "Thermal scaffolding",
+          "Power delivery"
+        ]
       },
       {
         "id": "technology-architecture-codesign",
@@ -75,7 +92,13 @@
           "Our symbolic co-design methodology captures dependencies between applications, architectures, and technologies. A forward pass optimizes architectural designs for a fixed technology; an inverse pass derives the technology parameters a target workload would require. PyTorch models feed high-level synthesis toolchains to generate dataflow graphs, followed by physical design analysis for interconnect parasitics and energy-delay modeling.",
           "On the interconnect side, we progress from conventional 2D crossbar arrays to folded 2D network-on-chip designs and finally to 3D-optimized topologies that exploit ultra-dense inter-layer vias below 100 nm for far greater bandwidth."
         ],
-        "tags": ["Symbolic modeling", "Inverse design", "HLS", "NoC", "Energy-delay"]
+        "tags": [
+          "Symbolic modeling",
+          "Inverse design",
+          "HLS",
+          "NoC",
+          "Energy-delay"
+        ]
       },
       {
         "id": "domain-specific-accelerators",
@@ -87,7 +110,13 @@
           "Chimera is an area-optimized reconfigurable accelerator with a novel topology, supporting up to 16,384 spins with 10-bit coefficient precision in just 0.5 mm² of core area at 17.09 µW per spin.",
           "Pegasus is a scalable digital Ising machine on a different graph topology, supporting dense connectivity and multi-chip scalability through asynchronous communication, with 6,192 time-multiplexed nodes running at 200 MHz — a CMOS-compatible route to NP-hard optimization."
         ],
-        "tags": ["Ising machines", "p-bits", "MCMC", "Chimera", "Pegasus"]
+        "tags": [
+          "Ising machines",
+          "p-bits",
+          "MCMC",
+          "Chimera",
+          "Pegasus"
+        ]
       }
     ]
   },
@@ -107,22 +136,30 @@
       {
         "number": "18-410 / 18-610",
         "title": "Hacker Fab",
-        "description": "An open-source micro- and nanofabrication facility where students collaborate to design and build state-of-the-art process equipment, with a focus on semiconductor device fabrication and emerging technologies."
+        "description": "An open-source micro- and nanofabrication facility where students build the process equipment they then fabricate devices on."
       },
       {
         "number": "18-525 / 18-725",
         "title": "Advanced Digital Integrated Circuit Design",
-        "description": "Student teams create a moderate-sized digital, analog/RF, or mixed-signal chip in a modern technology using industrial CAD tools and flows, culminating in designs sent out for fabrication."
+        "description": "Student teams take a digital, analog/RF, or mixed-signal chip through an industrial CAD flow, all the way to tape-out."
       }
     ]
   },
   "cta": {
     "enabled": true,
     "title": "We are building the group",
-    "text": "We are looking for passionate undergraduate, graduate, and postdoctoral researchers who want to work across devices, circuits, and architecture.",
+    "text": "We are looking for undergraduate, graduate, and postdoctoral researchers who want to work across devices, circuits, and architecture.",
     "actions": [
-      { "label": "See open positions", "href": "join.html", "style": "primary" },
-      { "label": "Get in touch", "href": "contact.html", "style": "ghost" }
+      {
+        "label": "See open positions",
+        "href": "join.html",
+        "style": "primary"
+      },
+      {
+        "label": "Get in touch",
+        "href": "contact.html",
+        "style": "ghost"
+      }
     ]
   }
 }

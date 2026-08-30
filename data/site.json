@@ -63,7 +63,7 @@
     { "label": "CMU ECE", "icon": "building", "href": "https://www.cmu.edu/ece/" }
   ],
   "theme": {
-    "default": "system",
+    "default": "light",
     "allowToggle": true
   }
 }
