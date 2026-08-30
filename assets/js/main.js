@@ -627,6 +627,8 @@
       ? '<a href="' + safeHref(sub.href) + '">' + esc(sub.name) + "</a>"
       : esc(sub.name);
     var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    var hint = (touch && h.hintTouch) || h.hint || "Hover a tier to see its projects";
+    var about = h.about;
 
     return '<section class="hero" id="hero">' +
       '<div class="hero-rail">' +
@@ -644,7 +646,15 @@
             '<div class="hero-stack-wrap"><div class="hero-stack">' + tiles + "</div></div>" +
           "</div>" +
           '<div class="hero-panel" id="hero-panel" aria-live="polite">' +
-            '<p class="hero-hint">' + esc((touch && h.hintTouch) || h.hint || "Hover a tier to see its projects") + "</p>" +
+            (about ?
+              '<div class="panel-about">' +
+                (about.eyebrow ? '<span class="panel-eyebrow">' + esc(about.eyebrow) + "</span>" : "") +
+                (about.title ? '<h2 class="panel-title">' + esc(about.title) + "</h2>" : "") +
+                (about.text ? '<p class="panel-text">' + esc(about.text) + "</p>" : "") +
+                (about.action ? '<a class="textlink" href="' + safeHref(about.action.href) + '">' + esc(about.action.label) +
+                  '<span class="arrow">' + icon("arrow", 13) + "</span></a>" : "") +
+                '<p class="hero-hint">' + esc(hint) + "</p>" +
+              "</div>" : '<p class="hero-hint">' + esc(hint) + "</p>") +
             '<div class="panel-body"></div>' +
           "</div>" +
           (stats ? '<div class="stats hero-stats">' + statsHtml(stats) + "</div>" : "") +

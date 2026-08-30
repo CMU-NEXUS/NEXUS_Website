@@ -5,7 +5,7 @@
     "description": "NEXUS: Nanoelectronics EXpeditions for Ubiquitous Systems. Designing future computing hardware with new technologies, circuits, and architectures at Carnegie Mellon ECE."
   },
   "hero": {
-    "_comment": "Hero scene: the wordmark sits on the left, the three research tiers stack on the right, and they slide to centre and magnify as you scroll. Hovering (or tapping) a tier lists its projects.",
+    "_comment": "Hero scene: the wordmark sits on the left, the three research tiers stack on the right and slide to centre as you scroll. The right-hand panel shows \"about\" by default and swaps to a tier's projects on hover.",
     "enabled": true,
     "wordmark": "NEXUS LAB",
     "expansion": "Nanoelectronics EXpeditions for Ubiquitous Systems",
@@ -55,6 +55,15 @@
           ]
         }
       ]
+    },
+    "about": {
+      "eyebrow": "About the group",
+      "title": "Hardware systems for an abundant-data world",
+      "text": "NEXUS works across the whole stack at once — new nanoelectronic devices, dense 3D integration, co-designed circuits, and domain-specific architectures, built together rather than one at a time.",
+      "action": {
+        "label": "Meet the group",
+        "href": "people.html"
+      }
     }
   },
   "stats": {
